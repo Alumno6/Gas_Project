@@ -1,0 +1,201 @@
+version: 2
+
+models:
+  - name: stg_gas__fuel
+    description: ""
+    columns:
+      - name: fuel_id
+        data_type: varchar
+        description: ""
+
+      - name: fuel_category
+        data_type: varchar
+        description: ""
+
+  - name: stg_gas__oil_price
+    description: ""
+    columns:
+      - name: fecha
+        data_type: date
+        description: ""
+
+      - name: precio
+        data_type: float
+        description: ""
+
+  - name: stg_gas__repostajes
+    description: ""
+    columns:
+      - name: transaction_id
+        data_type: varchar
+        description: ""
+
+      - name: date
+        data_type: date
+        description: ""
+
+      - name: user_id
+        data_type: number
+        description: ""
+
+      - name: car_id
+        data_type: number
+        description: ""
+
+      - name: station_id
+        data_type: number
+        description: ""
+
+      - name: fuel_id
+        data_type: varchar
+        description: ""
+
+      - name: price
+        data_type: float
+        description: ""
+
+      - name: liters
+        data_type: float
+        description: ""
+
+      - name: metodo_pago
+        data_type: varchar
+        description: ""
+
+  - name: stg_provincias
+    description: ""
+    columns:
+      - name: provincia_id
+        data_type: integer
+
+      - name: name
+        data_type: varchar
+
+      - name: poblacion
+        data_type: integer
+
+      - name: tasa_de_paro
+        data_type: float
+
+      - name: indice_industrial
+        data_type: float
+
+      - name: tiene_costa
+        data_type: varchar
+
+      - name: pib_per_capita
+        data_type: float
+
+      - name: densidad_de_poblacion
+        data_type: float
+
+      - name: tasa_de_natalidad
+        data_type: float
+
+      - name: tasa_de_mortalidad
+        data_type: float
+
+      - name: nivel_educativo
+        data_type: float
+
+      - name: tiene_frontera
+        data_type: varchar
+
+  - name: stg_gas__fuel_price
+    description: ""
+    columns:
+      - name: station_id
+        data_type: number
+        description: ""
+
+      - name: fuel_id
+        data_type: varchar
+        description: ""
+
+      - name: fuel_price
+        data_type: float
+        description: ""
+
+      - name: fecha
+        data_type: date
+        description: ""
+
+  - name: stg_gas__cars
+    description: ""
+    columns:
+      - name: car_id
+        data_type: integer
+        description: ""
+
+      - name: owner_id
+        data_type: integer
+        description: ""
+
+      - name: km
+        data_type: integer
+        description: ""
+
+      - name: make
+        data_type: varchar
+        description: ""
+
+      - name: model
+        data_type: varchar
+        description: ""
+
+      - name: fuel_category
+        data_type: varchar
+        description: ""
+
+      - name: gear
+        data_type: varchar
+        description: ""
+
+      - name: power_hp
+        data_type: integer
+        description: ""
+
+      - name: year
+        data_type: integer
+        description: ""
+        
+  - name: stg_gas__users
+    description: ""
+    columns:
+      - name: user_id
+        data_type: integer
+        description: ""
+
+      - name: name
+        data_type: varchar
+        description: ""
+
+      - name: gender
+        data_type: varchar
+        description: ""
+
+      - name: age
+        data_type: integer
+        description: ""
+
+      - name: job
+        data_type: varchar
+        description: ""
+
+      - name: provincia_id
+        data_type: integer
+        description: ""
+
+      - name: annual_income
+        data_type: float
+        description: ""
+
+      - name: marital_status
+        data_type: varchar
+        description: ""
+
+      - name: email
+        data_type: varchar
+        description: ""
+
+

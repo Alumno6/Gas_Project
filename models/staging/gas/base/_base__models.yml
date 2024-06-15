@@ -1,0 +1,100 @@
+version: 2
+
+models:
+  - name: base_gas__gasolineras
+    description: ""
+    columns:
+      - name: station_id
+        data_type: number
+        description: ""
+
+      - name: country
+        data_type: varchar
+        description: ""
+
+      - name: provincia
+        data_type: varchar
+        description: ""
+
+      - name: city
+        data_type: varchar
+        description: ""
+
+      - name: address
+        data_type: varchar
+        description: ""
+
+      - name: road_margin
+        data_type: varchar
+        description: ""
+
+      - name: schedule
+        data_type: varchar
+        description: ""
+
+      - name: company
+        data_type: varchar
+        description: ""
+
+      - name: fuel
+        data_type: varchar
+        description: ""
+
+      - name: fuel_price
+        data_type: float
+        description: ""
+
+      - name: fecha
+        data_type: date
+        description: ""
+
+      - name: fuel_category
+        data_type: varchar
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_tz
+        description: ""
+
+      - name: _fivetran_deleted
+        data_type: boolean
+        description: ""
+
+  - name: base_gas__repostajes
+    description: ""
+    columns:
+      - name: transaction_id
+        data_type: varchar
+        description: ""
+
+      - name: date
+        data_type: date
+        description: ""
+
+      - name: user_id
+        data_type: number
+        description: ""
+
+      - name: car_id
+        data_type: number
+        description: ""
+
+      - name: station_id
+        data_type: number
+        description: ""
+
+      - name: fuel
+        data_type: varchar
+        description: ""
+
+      - name: price
+        data_type: float
+        description: ""
+
+      - name: liters
+        data_type: float
+        description: ""
+
+      - name: metodo_pago
+        data_type: varchar
+        description: ""
