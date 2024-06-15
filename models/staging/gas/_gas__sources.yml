@@ -1,0 +1,101 @@
+version: 2
+
+sources:
+  - name: gas
+    schema: gas
+    database: ALUMNO6_DEV_BRONZE_DB
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    freshness:
+      warn_after: {count: 25, period: hour}
+      error_after: {count: 49, period: hour}
+
+    tables:
+      - name: coches
+        columns:
+          - name: KM
+          - name: MAKE
+          - name: MODEL
+          - name: FUEL_CATEGORY
+          - name: GEAR
+          - name: PRICE
+          - name: HP
+          - name: YEAR
+          - name: CAR_ID
+          - name: _FIVETRAN_SYNCED
+          - name: _FIVETRAN_DELETED
+
+      - name: clientes
+        columns:
+          - name: NOMBRE
+          - name: GENERO
+          - name: EDAD
+          - name: OCUPACION
+          - name: PROVINCIA
+          - name: INGRESO_ANUAL
+          - name: ESTADO_CIVIL
+          - name: EMAIL
+          - name: USER_ID
+          - name: CAR_ID
+          - name: _FIVETRAN_SYNCED
+          - name: _FIVETRAN_DELETED
+
+      - name: gasolineras
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: STATION_ID
+          - name: COUNTRY
+          - name: PROVINCIA
+          - name: CITY
+          - name: ADDRESS
+          - name: ROAD_MARGIN
+          - name: SCHEDULE
+          - name: COMPANY
+          - name: FUEL
+          - name: FUEL_PRICE
+          - name: FECHA
+          - name: FUEL_CATEGORY
+          - name: _FIVETRAN_SYNCED
+          - name: _FIVETRAN_DELETED
+
+      - name: petrol_price
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: FECHA
+          - name: PRECIO
+          - name: _FIVETRAN_SYNCED
+          - name: _FIVETRAN_DELETED
+
+      - name: repostajes
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: DATE
+          - name: USER_ID
+          - name: CAR_ID
+          - name: STATION_ID
+          - name: FUEL
+          - name: PRICE
+          - name: LITERS
+          - name: METODO_PAGO
+          - name: _FIVETRAN_SYNCED
+          - name: _FIVETRAN_DELETED
+
+      - name: provincias
+        columns:
+          - name: PROVINCIAS
+          - name: POBLACION
+          - name: TASA_DE_PARO
+          - name: INDICE_INDUSTRIAL
+          - name: COSTA
+          - name: PIB_PER_CAPITA
+          - name: DENSIDAD_DE_POBLACION
+          - name: TASA_DE_NATALIDAD
+          - name: TASA_DE_MORTALIDAD
+          - name: NIVEL_EDUCATIVO
+          - name: FRONTERA
+          - name: _FIVETRAN_SYNCED
+          - name: _FIVETRAN_DELETED
