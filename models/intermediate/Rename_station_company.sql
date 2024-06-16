@@ -1,22 +1,29 @@
-{% set names = most_frequent_values(ref('gasolineras_snapshot'),'company',10) %}
+{% set names = most_frequent_values(ref('dim_fuel_station'),'company',10) %}
 
-with 
+with
 
-source_sta as (
-    
-    select * from {{ ref('gasolineras_snapshot') }}
-    where dbt_valid_to is null
+source as(
 
-),
+    select * from {{ ref('dim_fuel_station') }}
 
-renamed as (
-
-    select
-        case
-            when (SPLIT_PART(company,' ', 1)) in(
-                                                                                              
-                                                )
-    from source_sta
 )
 
-select * from renamed
+station_renamed as (
+    
+    select
+        case
+            when SPLIT_PART(company, ' ', 1) in ('ALCAMPO','CARREFOUR','COSTCO','EROSKI') then 'SUPERMARKET'
+            when SPLIT_PART(company, ' ', 1) in (
+                {% for name in names %}
+                    '{{ name }}'{% if not loop.last %},{% endif %}
+                {% endfor %}
+            ) then SPLIT_PART(company, ' ', 1)
+            else 'OTHER'
+        end as company_rename,
+        {{ dbt_utils.star(ref('dim_fuel_station'), except=['company']) }}
+
+    from source
+
+)
+
+select * from station_renamed

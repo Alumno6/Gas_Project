@@ -1,4 +1,5 @@
-{% macro most_frequent_values(table, column, n) %}
+
+{% macro most_frequent_values(table, column, top_n) %}
 
     {% set query_sql %}
         SELECT valores
@@ -12,7 +13,7 @@
                 {{column}}
             ORDER BY
                 conteo desc
-            limit {{n}} 
+            limit {{top_n}} 
         )s
     {% endset %}
     --Ejecutamos la query    
