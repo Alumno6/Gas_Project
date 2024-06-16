@@ -98,3 +98,7 @@ models:
       - name: metodo_pago
         data_type: varchar
         description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_tz
+        description: ""
