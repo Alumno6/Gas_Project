@@ -73,7 +73,7 @@ sources:
       - name: repostajes
         loaded_at_field: _fivetran_synced
         columns:
-          - name: DATE
+          - name: timestamp
           - name: USER_ID
           - name: CAR_ID
           - name: STATION_ID

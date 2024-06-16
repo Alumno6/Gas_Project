@@ -1,4 +1,4 @@
-with 
+with
 
 source as (
 
@@ -9,8 +9,8 @@ source as (
 renamed as (
 
     select
-        {{dbt_utils.generate_surrogate_key(['DATE','USER_ID','LITERS'])}} AS transaction_id,
-        DATE,
+        {{dbt_utils.generate_surrogate_key(['timestamp','USER_ID','LITERS'])}} AS transaction_id,
+        timestamp,
         USER_ID,
         CAR_ID,
         STATION_ID,
@@ -18,9 +18,10 @@ renamed as (
         round(PRICE,2) as price,
         round(LITERS,2) as liters,
         METODO_PAGO,
+        _fivetran_synced
+
     from source
     
-
 )
 
 select * from renamed
