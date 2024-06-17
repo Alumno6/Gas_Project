@@ -93,8 +93,9 @@ ID del propietario del vehiculo el cual tiene relacion con la tabla de cientes.
 
 -----------------------------------
 
-{% docs snap_cars %}
+{% docs base_cars %}
 
-Snapshot donde se ha historificado los datos de los coches.
+Base de la tabal de coches en la cual aparecen datos sobre los vehiculos 
+de los clientes de las gasolineras.
 
 {% enddocs %}

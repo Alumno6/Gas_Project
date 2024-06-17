@@ -2,12 +2,12 @@ with
 
 source_c as (
 
-    select * from {{ ref('cars_snapshot') }}
+    select * from {{ ref('base_gas__cars') }}
 
 ),
 source_u as (
 
-    select * from {{ ref('users_snapshot') }}
+    select * from {{ ref('base_gas__users') }}
 ),
 
 renamed as (
@@ -25,7 +25,6 @@ renamed as (
     from source_c c
     join source_u U
     on U.car_id = c.car_id
-    where c.dbt_valid_to is null
 
 )
 

@@ -87,8 +87,8 @@ En esta tambien se sustituye el campo provincia por el id de esta de la tabla pr
 
 ---------------------------------------
 
-{% docs snap_users %}
+{% docs base_users %}
 
-Snapshot para historificar los clientes
+Base de la tabla de clientes de la cual se toman campos para varias tablas.
 
 {% enddocs %}
