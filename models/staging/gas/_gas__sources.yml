@@ -28,8 +28,6 @@ sources:
             description: "{{ doc('coches_FUEL_CATEGORY') }}"
           - name: GEAR
             description: "{{ doc('coches_GEAR') }}"
-          - name: PRICE
-            description: "{{ doc('coches_PRICE') }}"
           - name: HP
             description: "{{ doc('coches_HP') }}"
           - name: YEAR
@@ -53,6 +51,7 @@ sources:
           - name: OCUPACION
             description: "{{ doc('clientes_OCUPACION') }}"
           - name: PROVINCIA
+            data_type: varchar
             description: "{{ doc('clientes_PROVINCIA') }}"
           - name: INGRESO_ANUAL
             description: "{{ doc('clientes_INGRESO_ANUAL') }}"

@@ -20,9 +20,12 @@ renamed as (
         tasa_de_natalidad,
         tasa_de_mortalidad,
         nivel_educativo,
-        iff(frontera = true, 'Si', 'No') as tiene_frontera
+        iff(frontera = true, 'Si', 'No') as tiene_frontera,
+        dbt_valid_from,
+        dbt_valid_to
+
     from source_provincias
-    where dbt_valid_to is null
+
 
 )
 
