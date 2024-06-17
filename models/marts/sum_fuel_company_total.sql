@@ -9,17 +9,17 @@ station_renamed as (
 province_station as (
 
     SELECT 
-        MAX(SUMA),
         company_rename,
         provincia_id,
-        MONTH(timestamp) as month,
-        YEAR(timestamp) as year
+        month,
+        year,
+        MAX(SUMA) as maximo
     FROM(
         SELECT
             company_rename,
             provincia_id,
             MONTH(timestamp) as month,
-            YEAR(timestamp) as year
+            YEAR(timestamp) as year,
             SUM(price*liters) as suma
         FROM {{ ref('stg_gas__repostajes') }} R 
         JOIN station_renamed S
@@ -32,8 +32,8 @@ province_station as (
     GROUP BY 
         company_rename,
         provincia_id,
-        MONTH(timestamp) as month,
-        YEAR(timestamp) as year
+        month,
+        year
 ),
 
 clients as (
@@ -41,7 +41,7 @@ clients as (
     select
         user_id,
         age
-    from {{ ref('Rename_station_company') }}
+    from {{ ref('dim_user') }}
 ),
 
 refueling as (
@@ -53,10 +53,10 @@ renamed as (
     
     select
         company_rename,
-        sum(price*liters) as total_amount_sales,
+        round(sum(price*liters),2) as total_amount_sales,
         count(transaction_id) as total_unit_sales,
-        avg(price) as avg_liter_price,
-        avg(age) as average_age,
+        round(avg(price),2) as avg_liter_price,
+        round(avg(age),0) as average_age,
         MONTH(timestamp) as month,
         YEAR(timestamp) as year
 
@@ -69,6 +69,10 @@ renamed as (
         company_rename, 
         month(timestamp),
         year(timestamp)
+    order by
+        year(timestamp),
+        month(timestamp),
+        total_amount_sales desc
 
 )
 select * from renamed

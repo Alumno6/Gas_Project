@@ -14,7 +14,7 @@ renamed as (
         USER_ID,
         CAR_ID,
         STATION_ID,
-        FUEL,
+        FUEL as FUEL_CATEGORY,
         round(PRICE,2) as price,
         round(LITERS,2) as liters,
         METODO_PAGO,

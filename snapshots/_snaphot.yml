@@ -1,0 +1,262 @@
+version: 2
+
+snapshots:
+  - name: cars_snapshot
+    description: "{{ doc('snap_cars') }}"
+    columns:
+      - name: km
+        data_type: number
+        description: "{{ doc('coches_KM') }}"
+
+      - name: make
+        data_type: varchar
+        description: "{{ doc('coches_MAKE') }}"
+
+      - name: model
+        data_type: varchar
+        description: "{{ doc('coches_MODEL') }}"
+
+      - name: fuel_category
+        data_type: varchar
+        description: "{{ doc('coches_FUEL_CATEGORY') }}"
+
+      - name: gear
+        data_type: varchar
+        description: "{{ doc('coches_GEAR') }}"
+
+      - name: price
+        data_type: number
+        description: "{{ doc('coches_PRICE') }}"
+
+      - name: hp
+        data_type: float
+        description: "{{ doc('coches_HP') }}"
+
+      - name: year
+        data_type: number
+        description: "{{ doc('coches_YEAR') }}"
+
+      - name: car_id
+        data_type: number
+        description: "{{ doc('coches_CAR_ID') }}"
+
+      - name: _fivetran_synced
+        data_type: timestamp_tz
+        description: "{{ doc('coches_FIVETRAN_SYNCED') }}"
+
+      - name: _fivetran_deleted
+        data_type: boolean
+        description: "{{ doc('coches_FIVETRAN_DELETED') }}"
+
+      - name: dbt_scd_id
+        data_type: varchar
+        description: "{{ doc('snap_DBT_SCD_ID') }}"
+
+      - name: dbt_updated_at
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_UPDATED_AT') }}"
+
+      - name: dbt_valid_from
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_VALID_FROM') }}"
+
+      - name: dbt_valid_to
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_VALID_TO') }}"
+
+  - name: gasolineras_snapshot
+    description: "{{ doc('snap_gasolineras') }}"
+    columns:
+      - name: station_id
+        data_type: number
+        description: "{{ doc('gasolineras_STATION_ID') }}"
+
+      - name: country
+        data_type: varchar
+        description: "{{ doc('gasolineras_COUNTRY') }}"
+
+      - name: provincia_id
+        data_type: varchar
+        description: "{{ doc('provincias_PROVINCIA_ID') }}"
+
+      - name: city
+        data_type: varchar
+        description: "{{ doc('gasolineras_CITY') }}"
+
+      - name: address
+        data_type: varchar
+        description: "{{ doc('gasolineras_ADDRESS') }}"
+
+      - name: road_margin
+        data_type: varchar
+        description: "{{ doc('gasolineras_ROAD_MARGIN') }}"
+
+      - name: schedule
+        data_type: varchar
+        description: "{{ doc('gasolineras_SCHEDULE') }}"
+
+      - name: company
+        data_type: varchar
+        description: "{{ doc('gasolineras_COMPANY') }}"
+
+      - name: _fivetran_synced
+        data_type: timestamp_tz
+        description: "{{ doc('gasolineras_FIVETRAN_SYNCED') }}"
+
+      - name: dbt_scd_id
+        data_type: varchar
+        description: "{{ doc('snap_DBT_SCD_ID') }}"
+
+      - name: dbt_updated_at
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_UPDATED_AT') }}"
+
+      - name: dbt_valid_from
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_VALID_FROM') }}"
+
+      - name: dbt_valid_to
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_VALID_TO') }}"
+
+  - name: provincias_snapshot
+    description: "{{ doc('snap_provincias') }}"
+    columns:
+      - name: provincia_id
+        data_type: varchar
+        description: "{{ doc('provincias_PROVINCIA_ID') }}"
+
+      - name: provincias
+        data_type: varchar
+        description: "{{ doc('provincias_PROVINCIAS') }}"
+
+      - name: poblacion
+        data_type: number
+        description: "{{ doc('provincias_POBLACION') }}"
+
+      - name: tasa_de_paro
+        data_type: float
+        description: "{{ doc('provincias_TASA_DE_PARO') }}"
+
+      - name: indice_industrial
+        data_type: float
+        description: "{{ doc('provincias_INDICE_INDUSTRIAL') }}"
+
+      - name: costa
+        data_type: boolean
+        description: "{{ doc('provincias_COSTA') }}"
+
+      - name: pib_per_capita
+        data_type: float
+        description: "{{ doc('provincias_PIB_PER_CAPITA') }}"
+
+      - name: densidad_de_poblacion
+        data_type: float
+        description: "{{ doc('provincias_DENSIDAD_DE_POBLACION') }}"
+
+      - name: tasa_de_natalidad
+        data_type: float
+        description: "{{ doc('provincias_TASA_DE_NATALIDAD') }}"
+
+      - name: tasa_de_mortalidad
+        data_type: float
+        description: "{{ doc('provincias_TASA_DE_MORTALIDAD') }}"
+
+      - name: nivel_educativo
+        data_type: varchar
+        description: "{{ doc('provincias_NIVEL_EDUCATIVO') }}"
+
+      - name: frontera
+        data_type: boolean
+        description: "{{ doc('provincias_FRONTERA') }}"
+
+      - name: _fivetran_synced
+        data_type: timestamp_tz
+        description: "{{ doc('provincias_FIVETRAN_SYNCED') }}"
+
+      - name: _fivetran_deleted
+        data_type: boolean
+        description: "{{ doc('provincias_FIVETRAN_DELETED') }}"
+
+      - name: dbt_scd_id
+        data_type: varchar
+        description: "{{ doc('snap_DBT_SCD_ID') }}"
+
+      - name: dbt_updated_at
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_UPDATED_AT') }}"
+
+      - name: dbt_valid_from
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_VALID_FROM') }}"
+
+      - name: dbt_valid_to
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_VALID_TO') }}"
+
+  - name: users_snapshot
+    description: "{{ doc('snap_users') }}"
+    columns:
+      - name: nombre
+        data_type: varchar
+        description: "{{ doc('clientes_NOMBRE') }}"
+
+      - name: genero
+        data_type: varchar
+        description: "{{ doc('clientes_GENERO') }}"
+
+      - name: edad
+        data_type: number
+        description: "{{ doc('clientes_EDAD') }}"
+
+      - name: ocupacion
+        data_type: varchar
+        description: "{{ doc('clientes_OCUPACION') }}"
+
+      - name: provincia
+        data_type: varchar
+        description: "{{ doc('clientes_PROVINCIA') }}"
+
+      - name: ingreso_anual
+        data_type: number
+        description: "{{ doc('clientes_INGRESO_ANUAL') }}"
+
+      - name: estado_civil
+        data_type: varchar
+        description: "{{ doc('clientes_ESTADO_CIVIL') }}"
+
+      - name: email
+        data_type: varchar
+        description: "{{ doc('clientes_EMAIL') }}"
+
+      - name: user_id
+        data_type: number
+        description: "{{ doc('clientes_USER_ID') }}"
+
+      - name: car_id
+        data_type: number
+        description: "{{ doc('clientes_CAR_ID') }}"
+
+      - name: _fivetran_synced
+        data_type: timestamp_tz
+        description: "{{ doc('clientes_FIVETRAN_SYNCED') }}"
+
+      - name: _fivetran_deleted
+        data_type: boolean
+        description: "{{ doc('clientes_FIVETRAN_DELETED') }}"
+
+      - name: dbt_scd_id
+        data_type: varchar
+        description: "{{ doc('snap_DBT_SCD_ID') }}"
+
+      - name: dbt_updated_at
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_UPDATED_AT') }}"
+
+      - name: dbt_valid_from
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_VALID_FROM') }}"
+
+      - name: dbt_valid_to
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_VALID_TO') }}"

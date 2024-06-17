@@ -2,103 +2,107 @@ version: 2
 
 models:
   - name: base_gas__gasolineras
-    description: ""
+    description: "{{ doc('base_gasolineras') }}"
     columns:
       - name: station_id
         data_type: number
-        description: ""
+        description: "{{ doc('gasolineras_STATION_ID') }}"
 
       - name: country
         data_type: varchar
-        description: ""
+        description: "{{ doc('gasolineras_COUNTRY') }}"
 
       - name: provincia
         data_type: varchar
-        description: ""
+        description: "{{ doc('gasolineras_PROVINCIA') }}"
 
       - name: city
         data_type: varchar
-        description: ""
+        description: "{{ doc('gasolineras_CITY') }}"
 
       - name: address
         data_type: varchar
-        description: ""
+        description: "{{ doc('gasolineras_ADDRESS') }}"
 
       - name: road_margin
         data_type: varchar
-        description: ""
+        description: "{{ doc('gasolineras_ROAD_MARGIN') }}"
 
       - name: schedule
         data_type: varchar
-        description: ""
+        description: "{{ doc('gasolineras_SCHEDULE') }}"
 
       - name: company
         data_type: varchar
-        description: ""
+        description: "{{ doc('gasolineras_COMPANY') }}"
 
       - name: fuel
         data_type: varchar
-        description: ""
+        description: "{{ doc('gasolineras_FUEL') }}"
 
       - name: fuel_price
         data_type: float
-        description: ""
+        description: "{{ doc('gasolineras_FUEL_PRICE') }}"
 
       - name: fecha
         data_type: date
-        description: ""
+        description: "{{ doc('gasolineras_FECHA') }}"
 
       - name: fuel_category
         data_type: varchar
-        description: ""
+        description: "{{ doc('gasolineras_FUEL_CATEGORY') }}"
 
       - name: _fivetran_synced
         data_type: timestamp_tz
-        description: ""
+        description: "{{ doc('gasolineras_FIVETRAN_SYNCED') }}"
 
       - name: _fivetran_deleted
         data_type: boolean
-        description: ""
+        description: "{{ doc('gasolineras_FIVETRAN_DELETED') }}"
 
   - name: base_gas__repostajes
-    description: ""
+    description: "{{ doc('base_repostajes') }}"
     columns:
       - name: transaction_id
         data_type: varchar
-        description: ""
+        description:  "{{ doc('repostajes_TRANSACTION_ID') }}"
 
-      - name: date
+      - name: timestamp
         data_type: date
-        description: ""
+        description:  "{{ doc('repostajes_TIMESTAMP') }}"
 
       - name: user_id
         data_type: number
-        description: ""
+        description:  "{{ doc('repostajes_USER_ID') }}"
 
       - name: car_id
         data_type: number
-        description: ""
+        description:  "{{ doc('repostajes_CAR_ID') }}"
 
       - name: station_id
         data_type: number
-        description: ""
+        description:  "{{ doc('repostajes_STATION_ID') }}"
 
       - name: fuel
         data_type: varchar
-        description: ""
+        description:  "{{ doc('repostajes_FUEL') }}"
 
       - name: price
         data_type: float
-        description: ""
+        description:  "{{ doc('repostajes_PRICE') }}"
 
       - name: liters
         data_type: float
-        description: ""
+        description:  "{{ doc('repostajes_LITERS') }}"
 
       - name: metodo_pago
         data_type: varchar
-        description: ""
+        description:  "{{ doc('repostajes_METODO_PAGO') }}"
 
       - name: _fivetran_synced
         data_type: timestamp_tz
-        description: ""
+        description:  "{{ doc('repostajes_FIVETRAN_SYNCED') }}"
+
+      - name: _fivetran_deleted
+        data_type: timestamp_tz
+        description:  "{{ doc('repostajes_FIVETRAN_DELETED') }}"

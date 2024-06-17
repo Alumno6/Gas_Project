@@ -26,7 +26,7 @@ renamed as (
         R.METODO_PAGO,
     from source_repost R
     join source_gasolineras G 
-    on date(R.timestamp) = G.fecha and R.STATION_ID = G.STATION_ID and R.FUEL= G.FUEL_CATEGORY
+    on date(R.timestamp) = G.fecha and R.STATION_ID = G.STATION_ID and R.FUEL_CATEGORY= G.FUEL_CATEGORY
     
 
 )
