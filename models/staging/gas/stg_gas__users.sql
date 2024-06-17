@@ -12,7 +12,7 @@ source_p as (
 renamed as (
 
     select
-        user_id,
+        U.user_id,
         nombre as name,
         genero as gender,
         edad as age,
@@ -24,7 +24,7 @@ renamed as (
 
     from source_u U
     join source_p P
-    on U.provincia = P.provincias
+    on U.provincia_id = P.provincia_id
     where U.dbt_valid_to is null
 )
 

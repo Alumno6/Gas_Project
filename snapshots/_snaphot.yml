@@ -245,6 +245,10 @@ snapshots:
         data_type: boolean
         description: "{{ doc('clientes_FIVETRAN_DELETED') }}"
 
+      - name: provincia_id
+        data_type: varchar
+        description: "{{ doc('clientes_NOMBRE') }}"
+
       - name: dbt_scd_id
         data_type: varchar
         description: "{{ doc('snap_DBT_SCD_ID') }}"

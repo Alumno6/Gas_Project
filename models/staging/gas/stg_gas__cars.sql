@@ -1,6 +1,6 @@
 with 
 
-source as (
+source_c as (
 
     select * from {{ ref('cars_snapshot') }}
 
@@ -13,7 +13,7 @@ source_u as (
 renamed as (
 
     select
-        s.car_id,
+        c.car_id as car_id,
         U.user_id as owner_id,
         km,
         make,
@@ -22,10 +22,10 @@ renamed as (
         gear,
         hp as power_hp,
         year
-    from source s
+    from source_c c
     join source_u U
-    on U.car_id = s.car_id
-    where s.dbt_valid_to is null
+    on U.car_id = c.car_id
+    where c.dbt_valid_to is null
 
 )
 
