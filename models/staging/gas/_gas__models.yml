@@ -87,9 +87,10 @@ models:
         data_type: float
         description: "{{ doc('repostajes_LITERS') }}"
 
+
       - name: metodo_pago
         data_type: varchar
-        description: "{{ doc('repostajes_METODO_PAGO') }}"
+        description: "{{ doc('repostajes_METODO_PAGO') }}" 
 
   - name: stg_provincias
     description: "{{ doc('stg_provincias') }}"
@@ -97,6 +98,9 @@ models:
       - name: provincia_id
         data_type: integer
         description: "{{ doc('provincias_PROVINCIA_ID') }}"
+        tests:
+          - not_null
+          - unique
 
       - name: name
         data_type: varchar
@@ -117,6 +121,9 @@ models:
       - name: tiene_costa
         data_type: varchar
         description: "{{ doc('provincias_TIENE_COSTA') }}"
+        tests:
+          - accepted_values:
+              values: ['Si', 'No']        
 
       - name: pib_per_capita
         data_type: float
@@ -141,6 +148,9 @@ models:
       - name: tiene_frontera
         data_type: varchar
         description: "{{ doc('provincias_TIENE_FRONTERA') }}"
+        tests:
+          - accepted_values:
+              values: ['Si', 'No']   
 
   - name: stg_gas__fuel_price
     description: "{{ doc('stg_fuel_price') }}"
@@ -218,7 +228,10 @@ models:
       - name: user_id
         data_type: integer
         description: "{{ doc('clientes_USER_ID') }}"
-
+        tests:
+          - not_null
+          - unique
+              
       - name: name
         data_type: varchar
         description: "{{ doc('clientes_NOMBRE') }}"

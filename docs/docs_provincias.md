@@ -50,7 +50,7 @@ Producto Interior Bruto (PIB) per cápita de la provincia, (€).
 
 {% docs provincias_DENSIDAD_DE_POBLACION %}
 
-Número de habitantes por kilómetro cuadrado en la, (habitantes /KM^2).
+Número de habitantes por kilómetro cuadrado en la, (habitantes /KM^2). 
 
 {% enddocs %}
 

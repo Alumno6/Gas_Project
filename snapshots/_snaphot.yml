@@ -8,6 +8,9 @@ snapshots:
       - name: station_id
         data_type: number
         description: "{{ doc('gasolineras_STATION_ID') }}"
+        tests:
+          - not_null
+          - unique
 
       - name: country
         data_type: varchar
@@ -16,6 +19,10 @@ snapshots:
       - name: provincia_id
         data_type: varchar
         description: "{{ doc('provincias_PROVINCIA_ID') }}"
+        tests:
+          - relationships:
+              field: provincia_id
+              to: ref('stg_gas__provincias')
 
       - name: city
         data_type: varchar
@@ -63,6 +70,8 @@ snapshots:
       - name: provincia_id
         data_type: varchar
         description: "{{ doc('provincias_PROVINCIA_ID') }}"
+        tests:
+          - not_null
 
       - name: provincias
         data_type: varchar
@@ -71,10 +80,16 @@ snapshots:
       - name: poblacion
         data_type: number
         description: "{{ doc('provincias_POBLACION') }}"
+        tests:
+          - positive_values
 
       - name: tasa_de_paro
         data_type: float
         description: "{{ doc('provincias_TASA_DE_PARO') }}"
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
 
       - name: indice_industrial
         data_type: float
@@ -87,18 +102,30 @@ snapshots:
       - name: pib_per_capita
         data_type: float
         description: "{{ doc('provincias_PIB_PER_CAPITA') }}"
+        tests:
+          - positive_values
 
       - name: densidad_de_poblacion
         data_type: float
         description: "{{ doc('provincias_DENSIDAD_DE_POBLACION') }}"
+        tests:
+          - positive_values
 
       - name: tasa_de_natalidad
         data_type: float
         description: "{{ doc('provincias_TASA_DE_NATALIDAD') }}"
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1000        
 
       - name: tasa_de_mortalidad
         data_type: float
         description: "{{ doc('provincias_TASA_DE_MORTALIDAD') }}"
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1000
 
       - name: nivel_educativo
         data_type: varchar
