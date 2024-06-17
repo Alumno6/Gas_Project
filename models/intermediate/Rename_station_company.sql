@@ -1,12 +1,12 @@
-{% set names = most_frequent_values(ref('dim_fuel_station'),'company',10) %}
+{% set names = most_frequent_values(ref('gasolineras_snapshot'),'company',10) %}
 
 with
 
 source as(
 
-    select * from {{ ref('dim_fuel_station') }}
+    select * from {{ ref('gasolineras_snapshot') }}
 
-)
+),
 
 station_renamed as (
     
@@ -20,7 +20,7 @@ station_renamed as (
             ) then SPLIT_PART(company, ' ', 1)
             else 'OTHER'
         end as company_rename,
-        {{ dbt_utils.star(ref('dim_fuel_station'), except=['company']) }}
+        {{ dbt_utils.star(ref('gasolineras_snapshot'), except=['company']) }}
 
     from source
 
