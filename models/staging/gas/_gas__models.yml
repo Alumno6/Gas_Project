@@ -7,9 +7,14 @@ models:
       - name: fuel_id
         data_type: varchar
         description: "{{ doc('fuel_FUEL_ID') }}"
+        tests:
+          - not_null
+          - unique
+               
       - name: fuel_desc
         data_type: varchar
         description: "{{ doc('gasolineras_FUEL') }}"
+
       - name: fuel_category
         data_type: varchar
         description: "{{ doc('gasolineras_FUEL_CATEGORY') }}"
@@ -19,8 +24,13 @@ models:
     columns:
       - name: FECHA
         description: "{{ doc('petrol_price_FECHA') }}"
+        tests:
+          - unique
+
       - name: PRECIO
         description: "{{ doc('petrol_price_PRECIO') }}"
+        tests:
+          - positive_value
 
   - name: stg_gas__repostajes
     description: "{{ doc('stg_gas_repostajes') }}"
@@ -28,27 +38,55 @@ models:
       - name: transaction_id
         data_type: varchar
         description: "{{ doc('repostajes_TRANSACTION_ID') }}"
+        tests:
+          - not_null
+          - unique
+              
       - name: timestamp
         data_type: timestamp_tz
         description: "{{ doc('repostajes_TIMESTAMP') }}"
+
       - name: user_id
         data_type: number
         description: "{{ doc('repostajes_USER_ID') }}"
+        tests:
+          - relationships:
+              field: user_id
+              to: ref('stg_gas__users')
+
       - name: car_id
         data_type: number
         description: "{{ doc('repostajes_CAR_ID') }}"
+        tests:
+          - relationships:
+              field: car_id
+              to: ref('stg_gas__cars')
+
       - name: station_id
         data_type: number
         description: "{{ doc('repostajes_STATION_ID') }}"
+        tests:
+          - relationships:
+              field: station_id
+              to: ref('gasolineras_snapshot')
+
       - name: fuel_id
         data_type: varchar
         description: "{{ doc('fuel_FUEL_ID') }}"
+        tests:
+          - relationships:
+              field: fuel_id
+              to: ref('stg_gas__fuel')
+
       - name: price
         data_type: float
         description: "{{ doc('repostajes_PRICE') }}"
+
+
       - name: liters
         data_type: float
         description: "{{ doc('repostajes_LITERS') }}"
+
       - name: metodo_pago
         data_type: varchar
         description: "{{ doc('repostajes_METODO_PAGO') }}"
@@ -59,36 +97,47 @@ models:
       - name: provincia_id
         data_type: integer
         description: "{{ doc('provincias_PROVINCIA_ID') }}"
+
       - name: name
         data_type: varchar
         description: "{{ doc('provincias_NAME') }}"
+
       - name: poblacion
         data_type: integer
         description: "{{ doc('provincias_POBLACION') }}"
+
       - name: tasa_de_paro
         data_type: float
         description: "{{ doc('provincias_TASA_DE_PARO') }}"
+
       - name: indice_industrial
         data_type: float
         description: "{{ doc('provincias_INDICE_INDUSTRIAL') }}"
+
       - name: tiene_costa
         data_type: varchar
         description: "{{ doc('provincias_TIENE_COSTA') }}"
+
       - name: pib_per_capita
         data_type: float
         description: "{{ doc('provincias_PIB_PER_CAPITA') }}"
+
       - name: densidad_de_poblacion
         data_type: float
         description: "{{ doc('provincias_DENSIDAD_DE_POBLACION') }}"
+
       - name: tasa_de_natalidad
         data_type: float
         description: "{{ doc('provincias_TASA_DE_NATALIDAD') }}"
+
       - name: tasa_de_mortalidad
         data_type: float
         description: "{{ doc('provincias_TASA_DE_MORTALIDAD') }}"
+
       - name: nivel_educativo
         data_type: float
         description: "{{ doc('provincias_NIVEL_EDUCATIVO') }}"
+
       - name: tiene_frontera
         data_type: varchar
         description: "{{ doc('provincias_TIENE_FRONTERA') }}"
@@ -99,12 +148,23 @@ models:
       - name: station_id
         data_type: number
         description: "{{ doc('gasolineras_STATION_ID') }}"
+        tests:
+          - relationships:
+              field: station_id
+              to: ref('gasolineras_snapshot')
+
       - name: fuel_id
         data_type: varchar
         description: "{{ doc('fuel_FUEL_ID') }}"
+        tests:
+          - relationships:
+              field: fuel_id
+              to: ref('stg_gas__fuel')
+
       - name: fuel_price
         data_type: float
         description: "{{ doc('gasolineras_FUEL_PRICE') }}"
+
       - name: fecha
         data_type: date
         description: "{{ doc('gasolineras_FECHA') }}"
@@ -115,27 +175,39 @@ models:
       - name: car_id
         data_type: integer
         description: "{{ doc('coches_CAR_ID') }}"
+
       - name: owner_id
         data_type: integer
         description: "{{ doc('cars_OWNER_ID') }}"
+        tests:
+          - relationships:
+              field: user_id
+              to: ref('stg_gas__users')
+
       - name: km
         data_type: integer
         description: "{{ doc('coches_KM') }}"
+
       - name: make
         data_type: varchar
         description: "{{ doc('coches_MAKE') }}"
+
       - name: model
         data_type: varchar
         description: "{{ doc('coches_MODEL') }}"
+
       - name: fuel_category
         data_type: varchar
         description: "{{ doc('coches_FUEL_CATEGORY') }}"
+
       - name: gear
         data_type: varchar
         description: "{{ doc('coches_GEAR') }}"
+
       - name: power_hp
         data_type: integer
         description: "{{ doc('coches_HP') }}"
+
       - name: year
         data_type: integer
         description: "{{ doc('coches_YEAR') }}"
@@ -146,27 +218,39 @@ models:
       - name: user_id
         data_type: integer
         description: "{{ doc('clientes_USER_ID') }}"
+
       - name: name
         data_type: varchar
         description: "{{ doc('clientes_NOMBRE') }}"
+
       - name: gender
         data_type: varchar
         description: "{{ doc('clientes_GENERO') }}"
+
       - name: age
         data_type: integer
         description: "{{ doc('clientes_EDAD') }}"
+
       - name: job
         data_type: varchar
         description: "{{ doc('clientes_OCUPACION') }}"
+
       - name: provincia_id
         data_type: integer
         description: "{{ doc('provincias_PROVINCIA_ID') }}"
+        tests:
+          - relationships:
+              field: provincia_id
+              to: ref('stg_gas__provincias')
+
       - name: annual_income
         data_type: float
         description: "{{ doc('clientes_INGRESO_ANUAL') }}"
+
       - name: marital_status
         data_type: varchar
         description: "{{ doc('clientes_ESTADO_CIVIL') }}"
+
       - name: email
         data_type: varchar
         description: "{{ doc('clientes_EMAIL') }}"

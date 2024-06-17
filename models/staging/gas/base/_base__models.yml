@@ -7,6 +7,8 @@ models:
       - name: station_id
         data_type: number
         description: "{{ doc('gasolineras_STATION_ID') }}"
+        tests:
+          - not_null
 
       - name: country
         data_type: varchar
@@ -43,6 +45,8 @@ models:
       - name: fuel_price
         data_type: float
         description: "{{ doc('gasolineras_FUEL_PRICE') }}"
+        tests:
+          - positive_values
 
       - name: fecha
         data_type: date
@@ -66,7 +70,10 @@ models:
       - name: transaction_id
         data_type: varchar
         description:  "{{ doc('repostajes_TRANSACTION_ID') }}"
-
+        tests:
+          - not_null
+          - unique
+              
       - name: timestamp
         data_type: date
         description:  "{{ doc('repostajes_TIMESTAMP') }}"
@@ -74,14 +81,20 @@ models:
       - name: user_id
         data_type: number
         description:  "{{ doc('repostajes_USER_ID') }}"
-
+        tests:
+          - not_null
+              
       - name: car_id
         data_type: number
         description:  "{{ doc('repostajes_CAR_ID') }}"
+        tests:
+          - not_null
 
       - name: station_id
         data_type: number
         description:  "{{ doc('repostajes_STATION_ID') }}"
+        tests:
+          - not_null
 
       - name: fuel
         data_type: varchar
@@ -90,10 +103,14 @@ models:
       - name: price
         data_type: float
         description:  "{{ doc('repostajes_PRICE') }}"
+        tests:
+          - positive_values
 
       - name: liters
         data_type: float
         description:  "{{ doc('repostajes_LITERS') }}"
+        tests:
+          - positive_values
 
       - name: metodo_pago
         data_type: varchar
