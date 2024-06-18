@@ -27,3 +27,9 @@ Fecha y hora en que los datos fueron sincronizados por Fivetran.
 Marca booleana que indica si la fila fue eliminada según los registros de Fivetran.
 
 {% enddocs %}
+
+{% docs fct_oil_price %}
+
+Tabla de hechos que contiene información sobre los precios del petróleo de forma diaria.
+
+{% enddocs %}

@@ -92,3 +92,12 @@ En esta tambien se sustituye el campo provincia por el id de esta de la tabla pr
 Base de la tabla de clientes de la cual se toman campos para varias tablas.
 
 {% enddocs %}
+
+---------------------------------------
+
+{% docs dim_users %}
+
+Dimension de clientes en la cual aparece informacion relativa a todos 
+los usuarios que han relaizado repostajes.
+
+{% enddocs %}

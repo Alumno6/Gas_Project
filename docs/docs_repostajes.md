@@ -89,4 +89,32 @@ el fuel_id del combustible correspondiente a cada repostaje.
 
 {% enddocs %}
 
+------------------------------------------
 
+{% docs fct_refueling %}
+
+Tabla de hechos con informacion sobre los repostajes de diferentes gasolineras.
+
+{% enddocs %}
+
+------------------------------------------
+
+{% docs sum_provin_fuel %}
+
+Tabla resumen con los repostajes agrupados por provincia y tipo de combustibles para cada dia.
+
+{% enddocs %}
+
+{% docs sum_provin_fuel_COUNT %}
+
+Campo que recoge el recuento total de repostajes en cada una de las provincias
+para cada uno de los tipos de combsutible.
+
+{% enddocs %}
+
+{% docs sum_provin_fuel_AVG %}
+
+Campo que recoge el coste medio del repostaje (€) en cada una de las provincias
+para cada uno de los tipos de combsutible.
+
+{% enddocs %}

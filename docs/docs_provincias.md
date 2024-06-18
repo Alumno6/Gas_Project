@@ -116,3 +116,10 @@ Campo que recoje si la provicia tiene frontera, (Sí/No)
 Snapshot donde se ha historificado la informacion de las diferentes provincias.
 
 {% enddocs %}
+
+--------------------------------------
+{% docs dim_provincias %}
+
+Dimension donde se ha historificado la informacion de las diferentes provincias.
+
+{% enddocs %}
