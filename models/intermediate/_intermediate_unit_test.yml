@@ -1,0 +1,20 @@
+unit_tests:
+  - name: company_renaming
+    description: "checks the renaming of company names depending on their frequency "
+    model: Rename_station_company
+    given:
+      - input: ref('gasolineras_snapshot')
+        rows:
+          - {company: CARREFOUR}
+          - {company: COSTCO}
+          - {company: ALCAMPO}
+          - {company: REPSOL-A}
+          - {company: 'REPSOL,A'}
+
+    expect:
+      rows:
+        - {company: CARREFOUR,    company_rename: SUPERMARKET}
+        - {company: COSTCO,    company_rename: SUPERMARKET}
+        - {company: ALCAMPO,    company_rename: SUPERMARKET}
+        - {company: REPSOL-A', company_rename: REPSOL}
+        - {company: 'REPSOL,A',  company_rename: REPSOL}

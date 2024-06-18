@@ -7,7 +7,7 @@ de forma diaria.
 
 {% docs gasolineras_STATION_ID %}
 
-Identificador único de la estación de gasolina.
+Identificador único de la gasolinera.
 
 {% enddocs %}
 
@@ -131,5 +131,13 @@ que contiene precios diarios de gasolineras para diferentes combustibles.
 {% docs snap_gasolineras %}
 
 Snapshot en la que se ha historificado la informacion sebre cada gasolinera.
+
+{% enddocs %}
+
+----------------------------------------------------------
+
+{% docs dim_fuel_station %}
+
+Dimension en la que se ha historificado la informacion sebre cada gasolinera.
 
 {% enddocs %}

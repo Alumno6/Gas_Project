@@ -95,7 +95,16 @@ ID del propietario del vehiculo el cual tiene relacion con la tabla de cientes.
 
 {% docs base_cars %}
 
-Base de la tabal de coches en la cual aparecen datos sobre los vehiculos 
+Base de la tabla de coches en la cual aparecen datos sobre los vehiculos 
+de los clientes de las gasolineras.
+
+{% enddocs %}
+
+-----------------------------------
+
+{% docs dim_cars %}
+
+Dimension de coches en la cual aparecen datos sobre los vehiculos 
 de los clientes de las gasolineras.
 
 {% enddocs %}

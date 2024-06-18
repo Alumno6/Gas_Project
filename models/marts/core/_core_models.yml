@@ -1,0 +1,233 @@
+version: 2
+
+models:
+
+  - name: dim_users
+    description: "{{ doc('dim_users') }}"
+    columns:
+      - name: user_id
+        data_type: integer
+        description: "{{ doc('clientes_USER_ID') }}"
+        tests:
+          - not_null
+          - unique
+              
+      - name: name
+        data_type: varchar
+        description: "{{ doc('clientes_NOMBRE') }}"
+
+      - name: gender
+        data_type: varchar
+        description: "{{ doc('clientes_GENERO') }}"
+
+      - name: age
+        data_type: integer
+        description: "{{ doc('clientes_EDAD') }}"
+
+      - name: job
+        data_type: varchar
+        description: "{{ doc('clientes_OCUPACION') }}"
+
+      - name: provincia_id
+        data_type: integer
+        description: "{{ doc('provincias_PROVINCIA_ID') }}"
+        tests:
+          - relationships:
+              field: provincia_id
+              to: ref('stg_gas__provincias')
+
+      - name: annual_income
+        data_type: float
+        description: "{{ doc('clientes_INGRESO_ANUAL') }}"
+
+      - name: marital_status
+        data_type: varchar
+        description: "{{ doc('clientes_ESTADO_CIVIL') }}"
+
+      - name: email
+        data_type: varchar
+        description: "{{ doc('clientes_EMAIL') }}"
+  
+  - name: dim_provincias
+    description: "{{ doc('dim_provincias') }}"
+    columns:
+      - name: provincia_id
+        data_type: integer
+        description: "{{ doc('provincias_PROVINCIA_ID') }}"
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        data_type: varchar
+        description: "{{ doc('provincias_PROVINCIAS') }}"
+
+      - name: poblacion
+        data_type: integer
+        description: "{{ doc('provincias_POBLACION') }}"
+
+      - name: tasa_de_paro
+        data_type: float
+        description: "{{ doc('provincias_TASA_DE_PARO') }}"
+
+      - name: indice_industrial
+        data_type: float
+        description: "{{ doc('provincias_INDICE_INDUSTRIAL') }}"
+
+      - name: tiene_costa
+        data_type: varchar
+        description: "{{ doc('provincias_TIENE_COSTA') }}"
+        tests:
+          - accepted_values:
+              values: ['Si', 'No']        
+
+      - name: pib_per_capita
+        data_type: float
+        description: "{{ doc('provincias_PIB_PER_CAPITA') }}"
+
+      - name: densidad_de_poblacion
+        data_type: float
+        description: "{{ doc('provincias_DENSIDAD_DE_POBLACION') }}"
+
+      - name: tasa_de_natalidad
+        data_type: float
+        description: "{{ doc('provincias_TASA_DE_NATALIDAD') }}"
+
+      - name: tasa_de_mortalidad
+        data_type: float
+        description: "{{ doc('provincias_TASA_DE_MORTALIDAD') }}"
+
+      - name: nivel_educativo
+        data_type: float
+        description: "{{ doc('provincias_NIVEL_EDUCATIVO') }}"
+
+      - name: tiene_frontera
+        data_type: varchar
+        description: "{{ doc('provincias_TIENE_FRONTERA') }}"
+        tests:
+          - accepted_values:
+              values: ['Si', 'No']
+
+  - name: dim_fuel_station
+    description: "{{ doc('dim_fuel_station') }}"
+    columns:
+    columns:
+      - name: station_id
+        data_type: number
+        description: "{{ doc('gasolineras_STATION_ID') }}"
+        tests:
+          - not_null
+          - unique
+
+      - name: country
+        data_type: varchar
+        description: "{{ doc('gasolineras_COUNTRY') }}"
+
+      - name: provincia_id
+        data_type: varchar
+        description: "{{ doc('provincias_PROVINCIA_ID') }}"
+        tests:
+          - relationships:
+              field: provincia_id
+              to: ref('stg_gas__provincias')
+
+      - name: city
+        data_type: varchar
+        description: "{{ doc('gasolineras_CITY') }}"
+
+      - name: address
+        data_type: varchar
+        description: "{{ doc('gasolineras_ADDRESS') }}"
+
+      - name: road_margin
+        data_type: varchar
+        description: "{{ doc('gasolineras_ROAD_MARGIN') }}"
+
+      - name: schedule
+        data_type: varchar
+        description: "{{ doc('gasolineras_SCHEDULE') }}"
+
+      - name: company
+        data_type: varchar
+        description: "{{ doc('gasolineras_COMPANY') }}"
+
+      - name: _fivetran_synced
+        data_type: timestamp_tz
+        description: "{{ doc('gasolineras_FIVETRAN_SYNCED') }}"
+
+      - name: dbt_scd_id
+        data_type: varchar
+        description: "{{ doc('snap_DBT_SCD_ID') }}"
+
+      - name: dbt_updated_at
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_UPDATED_AT') }}"
+
+      - name: dbt_valid_from
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_VALID_FROM') }}"
+
+      - name: dbt_valid_to
+        data_type: timestamp_tz
+        description: "{{ doc('snap_DBT_VALID_TO') }}"
+
+  - name: dim_fuel_category
+    description: "{{ doc('dim_fuel_category') }}"
+    columns:
+      - name: fuel_id
+        data_type: varchar
+        description: "{{ doc('fuel_FUEL_ID') }}"
+        tests:
+          - not_null
+          - unique
+               
+      - name: fuel_desc
+        data_type: varchar
+        description: "{{ doc('gasolineras_FUEL') }}"
+
+      - name: fuel_category
+        data_type: varchar
+        description: "{{ doc('gasolineras_FUEL_CATEGORY') }}"
+
+  - name: dim_cars
+    description: "{{ doc('dim_cars') }}"
+    columns:
+      - name: car_id
+        data_type: integer
+        description: "{{ doc('coches_CAR_ID') }}"
+
+      - name: owner_id
+        data_type: integer
+        description: "{{ doc('cars_OWNER_ID') }}"
+        tests:
+          - relationships:
+              field: user_id
+              to: ref('stg_gas__users')
+
+      - name: km
+        data_type: integer
+        description: "{{ doc('coches_KM') }}"
+
+      - name: make
+        data_type: varchar
+        description: "{{ doc('coches_MAKE') }}"
+
+      - name: model
+        data_type: varchar
+        description: "{{ doc('coches_MODEL') }}"
+
+      - name: fuel_category
+        data_type: varchar
+        description: "{{ doc('coches_FUEL_CATEGORY') }}"
+
+      - name: gear
+        data_type: varchar
+        description: "{{ doc('coches_GEAR') }}"
+
+      - name: power_hp
+        data_type: integer
+        description: "{{ doc('coches_HP') }}"
+
+      - name: year
+        data_type: integer
+        description: "{{ doc('coches_YEAR') }}"

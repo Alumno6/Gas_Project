@@ -1,0 +1,125 @@
+version: 2
+
+models:
+  - name: fct_fuel_price
+    description: "{{ doc('fct_fuel_price') }}"
+    columns:
+      - name: station_id
+        data_type: number
+        description: "{{ doc('gasolineras_STATION_ID') }}"
+
+      - name: fuel_id
+        data_type: varchar
+        description: "{{ doc('fuel_FUEL_ID') }}"
+
+      - name: fuel_price
+        data_type: float
+        description: "{{ doc('gasolineras_FUEL_PRICE') }}"
+
+      - name: fecha
+        data_type: date
+        description: "{{ doc('gasolineras_FECHA') }}"
+
+  - name: fct_oil_price
+    description: "{{ doc('fct_oil_price') }}"
+    columns:
+      - name: fecha
+        data_type: date
+        description: "{{ doc('petrol_price_FECHA') }}"
+
+      - name: precio
+        data_type: float
+        description: "{{ doc('petrol_price_PRECIO') }}"
+
+  - name: fct_refueling
+    description: "{{ doc('fct_refueling') }}"
+    columns:
+      - name: transaction_id
+        data_type: varchar
+        description: "{{ doc('repostajes_TRANSACTION_ID') }}"
+
+      - name: timestamp
+        data_type: timestamp_tz
+        description: "{{ doc('repostajes_TIMESTAMP') }}"
+
+      - name: user_id
+        data_type: number
+        description: "{{ doc('repostajes_USER_ID') }}"
+
+      - name: car_id
+        data_type: number
+        description: "{{ doc('repostajes_CAR_ID') }}"
+
+      - name: station_id
+        data_type: number
+        description: "{{ doc('repostajes_STATION_ID') }}"
+
+      - name: fuel_id
+        data_type: varchar
+        description: "{{ doc('fuel_FUEL_ID') }}"
+
+      - name: price
+        data_type: float
+        description: "{{ doc('repostajes_PRICE') }}"
+
+      - name: liters
+        data_type: float
+        description: "{{ doc('repostajes_LITERS') }}"
+
+      - name: metodo_pago
+        data_type: varchar
+        description: "{{ doc('repostajes_METODO_PAGO') }}"
+
+  - name: sum_total_refueling_province_fueltype
+    description: "{{ doc('sum_provin_fuel') }}"
+    columns:
+      - name: date
+        data_type: date
+        description: "{{ doc('repostajes_FECHA') }}"
+
+      - name: total_refueling
+        data_type: number
+        description: "{{ doc('sum_provin_fuel_COUNT') }}"
+
+      - name: cost_avg
+        data_type: float
+        description: "{{ doc('sum_provin_fuel_AVG') }}"
+
+      - name: provincia_id
+        data_type: varchar
+        description:  "{{ doc('repostajes_PROVINCIA_ID') }}"
+
+      - name: fuel_id
+        data_type: varchar
+        description: "{{ doc('fuel_FUEL_ID') }}"
+
+  - name: sum_fuel_company_total
+    description: ""
+    columns:
+      - name: company_rename
+        data_type: varchar
+        description: ""
+
+      - name: total_amount_sales
+        data_type: float
+        description: ""
+
+      - name: total_unit_sales
+        data_type: number
+        description: ""
+
+      - name: avg_liter_price
+        data_type: float
+        description: ""
+
+      - name: average_age
+        data_type: number
+        description: ""
+
+      - name: month
+        data_type: number
+        description: ""
+
+      - name: year
+        data_type: number
+        description: ""

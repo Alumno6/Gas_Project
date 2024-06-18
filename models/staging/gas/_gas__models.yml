@@ -104,7 +104,7 @@ models:
 
       - name: name
         data_type: varchar
-        description: "{{ doc('provincias_NAME') }}"
+        description: "{{ doc('provincias_PROVINCIAS') }}"
 
       - name: poblacion
         data_type: integer
