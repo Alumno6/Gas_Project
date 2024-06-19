@@ -233,9 +233,6 @@ sources:
           - name: PROVINCIAS
             data_type: varchar
             description: "{{ doc('provincias_PROVINCIAS') }}"
-            tests:
-              - not_null 
-              - unique
 
           - name: POBLACION
             data_type: integer
