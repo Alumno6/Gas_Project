@@ -3,6 +3,12 @@ version: 2
 models:
   - name: fct_fuel_price
     description: "{{ doc('fct_fuel_price') }}"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - station_id
+            - fecha
+            - fuel_id
     columns:
       - name: station_id
         data_type: number
@@ -110,6 +116,12 @@ models:
 
   - name: sum_brand
     description: "{{ doc('sum_brand') }}"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date
+            - company_brand
+
     columns:
       - name: company_brand
         data_type: varchar
@@ -139,6 +151,12 @@ models:
 
   - name: sum_provin_fuel_type
     description: "{{ doc('sum_provin_fuel_type') }}"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date
+            - provincia_id
+            - fuel_id
     columns:
       - name: date
         data_type: date

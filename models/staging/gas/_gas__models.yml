@@ -19,18 +19,19 @@ models:
         data_type: varchar
         description: "{{ doc('gasolineras_FUEL_CATEGORY') }}"
 
-  - name: petrol_price
+  - name: stg_gas__oil_price
     description: "{{ doc('petrol_price') }}"
     columns:
       - name: FECHA
         description: "{{ doc('petrol_price_FECHA') }}"
         tests:
           - unique
-
+          - not_null
+              
       - name: PRECIO
         description: "{{ doc('petrol_price_PRECIO') }}"
         tests:
-          - positive_value
+          - positive_values
 
   - name: stg_gas__repostajes
     description: "{{ doc('stg_gas_repostajes') }}"
@@ -92,7 +93,7 @@ models:
         data_type: varchar
         description: "{{ doc('repostajes_METODO_PAGO') }}" 
 
-  - name: stg_provincias
+  - name: stg_gas__provincias
     description: "{{ doc('stg_provincias') }}"
     columns:
       - name: provincia_id
@@ -154,6 +155,12 @@ models:
 
   - name: stg_gas__fuel_price
     description: "{{ doc('stg_fuel_price') }}"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - station_id
+            - fuel_id
+            - fecha
     columns:
       - name: station_id
         data_type: number
@@ -185,7 +192,10 @@ models:
       - name: car_id
         data_type: integer
         description: "{{ doc('coches_CAR_ID') }}"
-
+        tests:
+          - not_null
+          - unique
+          
       - name: owner_id
         data_type: integer
         description: "{{ doc('cars_OWNER_ID') }}"
