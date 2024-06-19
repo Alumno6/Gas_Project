@@ -99,22 +99,82 @@ Tabla de hechos con informacion sobre los repostajes de diferentes gasolineras.
 
 ------------------------------------------
 
-{% docs sum_provin_fuel %}
+{% docs sum_brand %}
 
-Tabla resumen con los repostajes agrupados por provincia y tipo de combustibles para cada dia.
-
-{% enddocs %}
-
-{% docs sum_provin_fuel_COUNT %}
-
-Campo que recoge el recuento total de repostajes en cada una de las provincias
-para cada uno de los tipos de combsutible.
+Tabla sumatoria que recoje de forma diaria datos relativos a ventas, las compañias que aqui aparecen
+con nombre son aquellas mas importantes por numero de repostajes, el resto viene de forma agrupada con el nombre other.
 
 {% enddocs %}
 
-{% docs sum_provin_fuel_AVG %}
+{% docs sum_FECHA %}
 
-Campo que recoge el coste medio del repostaje (€) en cada una de las provincias
-para cada uno de los tipos de combsutible.
+Indica la fecha a la cual hace referencia los valores agrupados.
 
 {% enddocs %}
+
+{% docs sum_BRAND %}
+
+Campo que recoje el nombre para las compañias mas importantes y other para el resto.
+
+{% enddocs %}
+
+{% docs sum_TOTAL_AMOUT_SALES %}
+
+Sumatorio de las ventas para esa fecha (€).
+
+{% enddocs %}
+
+{% docs sum_TOTAL_UNIT_SALES %}
+
+Numero de ventas resgistradas en esa fecha.
+
+{% enddocs %}
+
+{% docs sum_LITER_PRICE %}
+
+Precio medio del litro respostado para todos los combustibles (€).
+
+{% enddocs %}
+
+------------------------------------------
+{% docs sum_provin_fuel_type %}
+
+Tabla resumen que recoje datos de repostajes agrupados por provincia y tipo de combustible.
+
+{% enddocs %}
+
+{% docs sum_TOTAL_REFUELING %}
+
+Campo que recoje el total vendido para esa fecha, en esa fecha y para ese combustible (€).
+
+{% enddocs %}
+
+{% docs sum_COST_AVG %}
+
+Campo que recoje el coste medio del respostaje (€).
+
+{% enddocs %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

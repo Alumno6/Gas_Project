@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: rename_station_company
+    description: "{{ doc('sum_rename_station_company') }}"
+    columns:
+      - name: company_id
+        data_type: varchar
+        description: "{{ doc('brand_COMPANY_ID') }}"
+        tests:
+          - not_null
+          - unique
+              
+      - name: company
+        data_type: varchar
+        description: "{{ doc('gasolineras_company') }}"
+
+      - name: company_rename
+        data_type: varchar
+        description: "{{ doc('brand_COMPANY_RENAME') }}"

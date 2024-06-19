@@ -7,14 +7,20 @@ models:
       - name: station_id
         data_type: number
         description: "{{ doc('gasolineras_STATION_ID') }}"
-
+        tests:
+          - not_null
+    
       - name: fuel_id
         data_type: varchar
         description: "{{ doc('fuel_FUEL_ID') }}"
+        tests:
+          - not_null
 
       - name: fuel_price
         data_type: float
         description: "{{ doc('gasolineras_FUEL_PRICE') }}"
+        tests:
+          - positive_values
 
       - name: fecha
         data_type: date
@@ -30,6 +36,8 @@ models:
       - name: precio
         data_type: float
         description: "{{ doc('petrol_price_PRECIO') }}"
+        tests:
+          - positive_values
 
   - name: fct_refueling
     description: "{{ doc('fct_refueling') }}"
@@ -37,6 +45,9 @@ models:
       - name: transaction_id
         data_type: varchar
         description: "{{ doc('repostajes_TRANSACTION_ID') }}"
+        tests:
+          - not_null 
+          - unique
 
       - name: timestamp
         data_type: timestamp_tz
@@ -45,81 +56,117 @@ models:
       - name: user_id
         data_type: number
         description: "{{ doc('repostajes_USER_ID') }}"
+        tests:
+          - not_null
+          - relationships:
+             field: user_id
+             to: ref('dim_users')
 
       - name: car_id
         data_type: number
         description: "{{ doc('repostajes_CAR_ID') }}"
+        tests:
+          - not_null
+          - relationships:
+             field: car_id
+             to: ref('dim_cars')
 
       - name: station_id
         data_type: number
         description: "{{ doc('repostajes_STATION_ID') }}"
+        tests:
+          - not_null
+          - relationships:
+             field: station_id
+             to: ref('dim_fuel_station')
 
       - name: fuel_id
         data_type: varchar
         description: "{{ doc('fuel_FUEL_ID') }}"
+        tests:
+          - not_null
+          - relationships:
+             field: fuel_id
+             to: ref('dim_fuel_category')
 
       - name: price
         data_type: float
         description: "{{ doc('repostajes_PRICE') }}"
+        tests:
+          - positive_values
 
       - name: liters
         data_type: float
         description: "{{ doc('repostajes_LITERS') }}"
+        tests:
+          - positive_values
 
       - name: metodo_pago
         data_type: varchar
         description: "{{ doc('repostajes_METODO_PAGO') }}"
 
-  - name: sum_total_refueling_province_fueltype
-    description: "{{ doc('sum_provin_fuel') }}"
+  - name: sum_brand
+    description: "{{ doc('sum_brand') }}"
+    columns:
+      - name: company_brand
+        data_type: varchar
+        description: "{{ doc('sum_BRAND') }}"
+
+      - name: total_amount_sales
+        data_type: float
+        description: "{{ doc('sum_TOTAL_AMOUT_SALES') }}"
+        tests:
+          - positive_values
+
+      - name: total_unit_sales
+        data_type: number
+        description: "{{ doc('sum_TOTAL_UNIT_SALES') }}"
+        tests:
+          - positive_values
+
+      - name: avg_liter_price
+        data_type: float
+        description: "{{ doc('sum_LITER_PRICE') }}"
+        tests:
+          - positive_values
+
+      - name: date
+        data_type: date
+        description: "{{ doc('sum_FECHA') }}"
+
+  - name: sum_provin_fuel_type
+    description: "{{ doc('sum_provin_fuel_type') }}"
     columns:
       - name: date
         data_type: date
-        description: "{{ doc('repostajes_FECHA') }}"
+        description: "{{ doc('sum_FECHA') }}"
 
       - name: total_refueling
         data_type: number
-        description: "{{ doc('sum_provin_fuel_COUNT') }}"
+        description: "{{ doc('sum_TOTAL_REFUELING') }}"
+        tests:
+          - positive_values
 
       - name: cost_avg
         data_type: float
-        description: "{{ doc('sum_provin_fuel_AVG') }}"
+        description: "{{ doc('sum_COST_AVG') }}"
+        tests:
+          - positive_values
 
       - name: provincia_id
         data_type: varchar
-        description:  "{{ doc('repostajes_PROVINCIA_ID') }}"
+        description:  "{{ doc('provincias_PROVINCIA_ID') }}"
+        tests:
+          - not_null
+          - relationships:
+             field: provincia_id
+             to: ref('dim_provincias')
 
       - name: fuel_id
         data_type: varchar
         description: "{{ doc('fuel_FUEL_ID') }}"
-
-  - name: sum_fuel_company_total
-    description: ""
-    columns:
-      - name: company_rename
-        data_type: varchar
-        description: ""
-
-      - name: total_amount_sales
-        data_type: float
-        description: ""
-
-      - name: total_unit_sales
-        data_type: number
-        description: ""
-
-      - name: avg_liter_price
-        data_type: float
-        description: ""
-
-      - name: average_age
-        data_type: number
-        description: ""
-
-      - name: month
-        data_type: number
-        description: ""
-
-      - name: year
-        data_type: number
-        description: ""
+        tests:
+          - not_null
+          - relationships:
+             field: fuel_id
+             to: ref('dim_fuel_category')

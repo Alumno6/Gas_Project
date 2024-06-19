@@ -21,7 +21,6 @@ source as (
 source_sta as (
     
     select * from {{ ref('gasolineras_snapshot') }}
-    where dbt_valid_to is null
 
 ),
 
@@ -29,13 +28,13 @@ renamed as (
 
     select
         date(timestamp) as date,
-        count(distinct user_id) as total_refueling,
-        round(avg(price*liters),2) as cost_avg,
+        count(transaction_id) as total_refueling,
+        ROUND(avg(price*liters),2) as cost_avg,
         provincia_id,
         fuel_id
         
     from source R 
-    join source_sta G 
+    left join source_sta G 
     on R.STATION_ID = G.STATION_ID
     group by date, fuel_id, provincia_id
 
