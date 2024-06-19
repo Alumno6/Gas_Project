@@ -3,7 +3,7 @@
 {{
     config(
       target_schema='snapshots',
-      unique_key='STATION_ID',
+      unique_key="STATION_ID",
       strategy='timestamp',
       updated_at='_fivetran_synced',
     )
@@ -27,16 +27,17 @@ renamed as (
     select
         G.STATION_ID,
         G.COUNTRY,
-        P.PROVINCIA_ID,
+        P.provincia_id,
         G.CITY,
         G.ADDRESS,
         G.ROAD_MARGIN,
         G.schedule,
         G.COMPANY,
         G._fivetran_synced
+
     from source_gasolineras G
-    JOIN source_provincias P
-    on G.provincia = P.provincias
+    join source_provincias P 
+    on P.provincias = G.provincia
     group by 
         G.STATION_ID,
         G.COUNTRY,
@@ -47,6 +48,7 @@ renamed as (
         G.schedule,
         G.COMPANY,
         G._fivetran_synced
+
 )
 
 select * from renamed

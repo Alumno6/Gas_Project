@@ -111,7 +111,6 @@ models:
   - name: dim_fuel_station
     description: "{{ doc('dim_fuel_station') }}"
     columns:
-    columns:
       - name: station_id
         data_type: number
         description: "{{ doc('gasolineras_STATION_ID') }}"
@@ -195,6 +194,9 @@ models:
       - name: car_id
         data_type: integer
         description: "{{ doc('coches_CAR_ID') }}"
+        tests:
+          - not_null
+          - unique
 
       - name: owner_id
         data_type: integer
@@ -231,3 +233,14 @@ models:
       - name: year
         data_type: integer
         description: "{{ doc('coches_YEAR') }}"
+
+  - name: dim_time
+    description: "Dimension de tiempo"
+    columns:
+      - name: DATE_DAY
+        data_type: date
+        description: "Clave primaria dimension de tiempo"
+        tests:
+          - not_null
+          - unique
+      

@@ -3,7 +3,7 @@
 {{
     config(
       target_schema='snapshots',
-      unique_key = 'provincia_id',
+      unique_key='provincia_id',
       strategy='timestamp',
       updated_at='_fivetran_synced',
     )

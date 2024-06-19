@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: rename_station_company
+  - name: Rename_station_company
     description: "{{ doc('sum_rename_station_company') }}"
     columns:
       - name: company_id
@@ -13,7 +13,7 @@ models:
               
       - name: company
         data_type: varchar
-        description: "{{ doc('gasolineras_company') }}"
+        description: "{{ doc('gasolineras_COMPANY') }}"
 
       - name: company_rename
         data_type: varchar

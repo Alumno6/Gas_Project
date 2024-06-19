@@ -20,22 +20,43 @@ sources:
         columns:
           - name: KM
             description: "{{ doc('coches_KM') }}"
+            tests:
+              - positive_values
+
           - name: MAKE
             description: "{{ doc('coches_MAKE') }}"
+ 
           - name: MODEL
             description: "{{ doc('coches_MODEL') }}"
+
           - name: FUEL_CATEGORY
             description: "{{ doc('coches_FUEL_CATEGORY') }}"
+            tests:
+              - accepted_values:
+                  values: ['Diesel', 'Gasoline']  
+
           - name: GEAR
             description: "{{ doc('coches_GEAR') }}"
+
           - name: HP
             description: "{{ doc('coches_HP') }}"
+            tests:
+              - positive_values
+
           - name: YEAR
             description: "{{ doc('coches_YEAR') }}"
+            tests:
+              - positive_values
+            
           - name: CAR_ID
             description: "{{ doc('coches_CAR_ID') }}"
+            tests:
+              - not_null
+              - unique
+                  
           - name: _FIVETRAN_SYNCED
             description: "{{ doc('coches_FIVETRAN_SYNCED') }}"
+
           - name: _FIVETRAN_DELETED
             description: "{{ doc('coches_FIVETRAN_DELETED') }}"
 
@@ -44,60 +65,99 @@ sources:
         columns:
           - name: NOMBRE
             description: "{{ doc('clientes_NOMBRE') }}"
+
           - name: GENERO
             description: "{{ doc('clientes_GENERO') }}"
+
           - name: EDAD
             description: "{{ doc('clientes_EDAD') }}"
+
           - name: OCUPACION
             description: "{{ doc('clientes_OCUPACION') }}"
+
           - name: PROVINCIA
             data_type: varchar
             description: "{{ doc('clientes_PROVINCIA') }}"
+
           - name: INGRESO_ANUAL
             description: "{{ doc('clientes_INGRESO_ANUAL') }}"
+            tests:
+              - positive_values
+
           - name: ESTADO_CIVIL
             description: "{{ doc('clientes_ESTADO_CIVIL') }}"
+
           - name: EMAIL
             description: "{{ doc('clientes_EMAIL') }}"
+
           - name: USER_ID
             description: "{{ doc('clientes_USER_ID') }}"
+            tests:
+              - not_null
+              - unique
+                  
           - name: CAR_ID
             description: "{{ doc('clientes_CAR_ID') }}"
+            tests:
+              - relationships:
+                  field: car_id
+                  to: source('gas', 'coches')
+
           - name: _FIVETRAN_SYNCED
             description: "{{ doc('clientes_FIVETRAN_SYNCED') }}"
+
           - name: _FIVETRAN_DELETED
             description: "{{ doc('clientes_FIVETRAN_DELETED') }}"
 
       - name: gasolineras
         description: "{{ doc('gasolineras') }}"
         loaded_at_field: _fivetran_synced
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - station_id
+                - fecha
+                - fuel
         columns:
           - name: STATION_ID
             description: "{{ doc('gasolineras_STATION_ID') }}"
+
           - name: COUNTRY
             description: "{{ doc('gasolineras_COUNTRY') }}"
+
           - name: PROVINCIA
             description: "{{ doc('gasolineras_PROVINCIA') }}"
+
           - name: CITY
             description: "{{ doc('gasolineras_CITY') }}"
+
           - name: ADDRESS
             description: "{{ doc('gasolineras_ADDRESS') }}"
+
           - name: ROAD_MARGIN
             description: "{{ doc('gasolineras_ROAD_MARGIN') }}"
+
           - name: SCHEDULE
             description: "{{ doc('gasolineras_SCHEDULE') }}"
+
           - name: COMPANY
             description: "{{ doc('gasolineras_COMPANY') }}"
+
           - name: FUEL
             description: "{{ doc('gasolineras_FUEL') }}"
+
           - name: FUEL_PRICE
             description: "{{ doc('gasolineras_FUEL_PRICE') }}"
+
           - name: FECHA
             description: "{{ doc('gasolineras_FECHA') }}"
+
           - name: FUEL_CATEGORY
             description: "{{ doc('gasolineras_FUEL_CATEGORY') }}"
+
           - name: _FIVETRAN_SYNCED
             description: "{{ doc('gasolineras_FIVETRAN_SYNCED') }}"
+
           - name: _FIVETRAN_DELETED
             description: "{{ doc('gasolineras_FIVETRAN_DELETED') }}"
 
@@ -107,6 +167,10 @@ sources:
         columns:
           - name: FECHA
             description: "{{ doc('petrol_price_FECHA') }}"
+            tests:
+              - not_null
+              - unique
+          
           - name: PRECIO
             description: "{{ doc('petrol_price_PRECIO') }}"
           - name: _FIVETRAN_SYNCED
@@ -117,25 +181,49 @@ sources:
       - name: repostajes
         description: "{{ doc('repostajes') }}"
         loaded_at_field: _fivetran_synced
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - station_id
+                - timestamp
+                - user_id
+                - liters
         columns:
           - name: timestamp
             description: "{{ doc('repostajes_TIMESTAMP') }}"
+
           - name: USER_ID
             description: "{{ doc('repostajes_USER_ID') }}"
+            tests:
+              - relationships:
+                  field: user_id
+                  to: source('gas', 'clientes')
+
           - name: CAR_ID
             description: "{{ doc('repostajes_CAR_ID') }}"
+            tests:
+              - relationships:
+                  field: car_id
+                  to: source('gas', 'coches')
+
           - name: STATION_ID
             description: "{{ doc('repostajes_STATION_ID') }}"
+
           - name: FUEL
             description: "{{ doc('repostajes_FUEL') }}"
+
           - name: PRICE
             description: "{{ doc('repostajes_PRICE') }}"
+
           - name: LITERS
             description: "{{ doc('repostajes_LITERS') }}"
+
           - name: METODO_PAGO
             description: "{{ doc('repostajes_METODO_PAGO') }}"
+
           - name: _FIVETRAN_SYNCED
             description: "{{ doc('repostajes_FIVETRAN_SYNCED') }}"
+
           - name: _FIVETRAN_DELETED
             description: "{{ doc('repostajes_FIVETRAN_DELETED') }}"
 
@@ -145,39 +233,54 @@ sources:
           - name: PROVINCIAS
             data_type: varchar
             description: "{{ doc('provincias_PROVINCIAS') }}"
+            tests:
+              - not_null 
+              - unique
+
           - name: POBLACION
             data_type: integer
             description: "{{ doc('provincias_POBLACION') }}"
+
           - name: TASA_DE_PARO
             data_type: float
             description: "{{ doc('provincias_TASA_DE_PARO') }}"
+
           - name: INDICE_INDUSTRIAL
             data_type: float
             description: "{{ doc('provincias_INDICE_INDUSTRIAL') }}"
+
           - name: COSTA
             data_type: varchar
             description: "{{ doc('provincias_COSTA') }}"
+
           - name: PIB_PER_CAPITA
             data_type: float
             description: "{{ doc('provincias_PIB_PER_CAPITA') }}"
+
           - name: DENSIDAD_DE_POBLACION
             data_type: float
             description: "{{ doc('provincias_DENSIDAD_DE_POBLACION') }}"
+
           - name: TASA_DE_NATALIDAD
             data_type: float
             description: "{{ doc('provincias_TASA_DE_NATALIDAD') }}"
+
           - name: TASA_DE_MORTALIDAD
             data_type: float
             description: "{{ doc('provincias_TASA_DE_MORTALIDAD') }}"
+
           - name: NIVEL_EDUCATIVO
             data_type: float
             description: "{{ doc('provincias_NIVEL_EDUCATIVO') }}"
+
           - name: FRONTERA
             data_type: varchar
             description: "{{ doc('provincias_FRONTERA') }}"
+
           - name: _FIVETRAN_SYNCED
             data_type: timestamp_tz
             description: "{{ doc('provincias_FIVETRAN_SYNCED') }}"
+
           - name: _FIVETRAN_DELETED
             data_type: boolean
             description: "{{ doc('provincias_FIVETRAN_DELETED') }}"
