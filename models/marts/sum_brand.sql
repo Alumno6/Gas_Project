@@ -36,7 +36,8 @@ renamed as (
         round(sum(price*liters),2) as total_amount_sales,
         count(transaction_id) as total_unit_sales,
         round(avg(price),2) as avg_liter_price,
-        date(timestamp) as date
+        date(timestamp) as date,
+        CURRENT_TIMESTAMP() as time_added
 
     from refueling R 
     join station_renamed S 

@@ -33,7 +33,7 @@ renamed as (
         G.ROAD_MARGIN,
         G.schedule,
         G.COMPANY,
-        G._fivetran_synced
+        max(G._fivetran_synced) as _fivetran_synced
 
     from source_gasolineras G
     join source_provincias P 
@@ -46,8 +46,7 @@ renamed as (
         G.ADDRESS,
         G.ROAD_MARGIN,
         G.schedule,
-        G.COMPANY,
-        G._fivetran_synced
+        G.COMPANY
 
 )
 
