@@ -32,6 +32,9 @@ models:
       - name: fecha
         data_type: date
         description: "{{ doc('petrol_price_FECHA') }}"
+        tests:
+          - not_null 
+          - unique
 
       - name: precio
         data_type: float
