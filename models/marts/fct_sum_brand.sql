@@ -11,10 +11,10 @@ With
 station_renamed as (
 
     select 
-        {{ dbt_utils.star(from=ref('gasolineras_snapshot'),except=['company','_FIVETRAN_SYNCED','DBT_SCD_ID','DBT_UPDATED_AT'] ) }},
+        {{ dbt_utils.star(from=ref('stg_gas__gasolineras'),except=['company'] ) }},
         R.company_rename as company_brand
     from {{ ref('int_Rename_station_company') }} R
-    join {{ ref('gasolineras_snapshot') }} G
+    join {{ ref('stg_gas__gasolineras') }} G
     on R.company = G.company
 ),
 

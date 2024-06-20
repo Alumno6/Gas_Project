@@ -116,7 +116,6 @@ models:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - station_id
-            - dbt_valid_to
     columns:
       - name: station_id
         data_type: number
@@ -158,21 +157,6 @@ models:
         data_type: timestamp_tz
         description: "{{ doc('gasolineras_FIVETRAN_SYNCED') }}"
 
-      - name: dbt_scd_id
-        data_type: varchar
-        description: "{{ doc('snap_DBT_SCD_ID') }}"
-
-      - name: dbt_updated_at
-        data_type: timestamp_tz
-        description: "{{ doc('snap_DBT_UPDATED_AT') }}"
-
-      - name: dbt_valid_from
-        data_type: timestamp_tz
-        description: "{{ doc('snap_DBT_VALID_FROM') }}"
-
-      - name: dbt_valid_to
-        data_type: timestamp_tz
-        description: "{{ doc('snap_DBT_VALID_TO') }}"
 
   - name: dim_fuel_category
     description: "{{ doc('dim_fuel_category') }}"

@@ -279,6 +279,53 @@ models:
       - name: email
         data_type: varchar
         description: "{{ doc('clientes_EMAIL') }}"
+      
+  - name: stg_gas__gasolineras
+    description: "{{ doc('stg_gas__gasolineras') }}"
+
+    columns:
+      - name: station_id
+        data_type: number
+        description: "{{ doc('gasolineras_STATION_ID') }}"
+        tests:
+          - not_null
+          - unique
+
+      - name: country
+        data_type: varchar
+        description: "{{ doc('gasolineras_COUNTRY') }}"
+
+      - name: provincia_id
+        data_type: varchar
+        description: "{{ doc('provincias_PROVINCIA_ID') }}"
+        tests:
+          - relationships:
+              field: provincia_id
+              to: ref('stg_gas__provincias')
+
+      - name: city
+        data_type: varchar
+        description: "{{ doc('gasolineras_CITY') }}"
+
+      - name: address
+        data_type: varchar
+        description: "{{ doc('gasolineras_ADDRESS') }}"
+
+      - name: road_margin
+        data_type: varchar
+        description: "{{ doc('gasolineras_ROAD_MARGIN') }}"
+
+      - name: schedule
+        data_type: varchar
+        description: "{{ doc('gasolineras_SCHEDULE') }}"
+
+      - name: company
+        data_type: varchar
+        description: "{{ doc('gasolineras_COMPANY') }}"
+
+      - name: _fivetran_synced
+        data_type: timestamp_tz
+        description: "{{ doc('gasolineras_FIVETRAN_SYNCED') }}"
 
 
 

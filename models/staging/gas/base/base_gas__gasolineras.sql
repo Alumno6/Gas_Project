@@ -15,7 +15,7 @@ renamed as (
         CITY,
         ADDRESS,
         IFF(ROAD_MARGIN = 'I','Left','Right') as ROAD_MARGIN,
-        '24H' as schedule,
+        schedule,
         COMPANY,
         FUEL,
         round(FUEL_PRICE,2) as fuel_price,

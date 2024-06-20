@@ -11,8 +11,8 @@
 
 select
     {{ dbt_utils.generate_surrogate_key(['provincias']) }} as provincia_id,
-    {{ dbt_utils.star(source('gas', 'provincias'), except=['_fivetran_synced']) }},
-    max(_fivetran_synced) over (partition by provincias) as _fivetran_synced
+    {{ dbt_utils.star(source('gas', 'provincias')) }},
+
 from {{ source('gas', 'provincias') }}
 
 {% endsnapshot %}

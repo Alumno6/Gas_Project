@@ -11,7 +11,7 @@ source as (
 source_stations as (
 
     select station_id, provincia_id 
-    from {{ ref('gasolineras_snapshot') }}
+    from {{ ref('stg_gas__gasolineras') }}
 
 ),
 
