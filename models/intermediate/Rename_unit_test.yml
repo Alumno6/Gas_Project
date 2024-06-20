@@ -6,7 +6,7 @@ unit_tests:
       macros:
         most_frequent_values: ['REPSOL','CEPSA']
     given:
-      - input: ref('gasolineras_snapshot')
+      - input: ref('stg_gas__gasolineras')
         rows:
           - {company: CARREFOUR}
           - {company: 'CEPSA,6'}

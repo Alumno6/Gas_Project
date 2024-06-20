@@ -20,7 +20,7 @@ source as (
 ),
 source_sta as (
     
-    select * from {{ ref('gasolineras_snapshot') }}
+    select * from {{ ref('stg_gas__gasolineras') }}
 
 ),
 

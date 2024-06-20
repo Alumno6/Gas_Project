@@ -128,9 +128,9 @@ que contiene precios diarios de gasolineras para diferentes combustibles.
 
 ----------------------------------------------------------
 
-{% docs snap_gasolineras %}
+{% docs stg_gas__gasolineras %}
 
-Snapshot en la que se ha historificado la informacion sebre cada gasolinera.
+Stg en la que se guarda informacion de cada gasolinera.
 
 {% enddocs %}
 

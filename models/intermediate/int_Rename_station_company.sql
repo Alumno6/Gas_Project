@@ -1,10 +1,10 @@
-{% set names = most_frequent_values(ref('gasolineras_snapshot'),'company',10) %}
+{% set names = most_frequent_values(ref('stg_gas__gasolineras'),'company',10) %}
 
 with
 
 source as(
 
-    select * from {{ ref('gasolineras_snapshot') }}
+    select * from {{ ref('stg_gas__gasolineras') }}
 
 ),
 
