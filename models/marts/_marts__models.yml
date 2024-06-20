@@ -114,7 +114,7 @@ models:
         data_type: varchar
         description: "{{ doc('repostajes_METODO_PAGO') }}"
 
-  - name: sum_brand
+  - name: fct_sum_brand
     description: "{{ doc('sum_brand') }}"
     tests:
       - dbt_utils.unique_combination_of_columns:
@@ -149,7 +149,7 @@ models:
         data_type: date
         description: "{{ doc('sum_FECHA') }}"
 
-  - name: sum_provin_fuel_type
+  - name: fct_sum_provin_fuel_type
     description: "{{ doc('sum_provin_fuel_type') }}"
     tests:
       - dbt_utils.unique_combination_of_columns:

@@ -1,7 +1,7 @@
 unit_tests:
   - name: Rename_unit_test
     description: "comprueba la logica del modelo"
-    model: Rename_station_company
+    model: int_Rename_station_company
     overrides:
       macros:
         most_frequent_values: ['REPSOL','CEPSA']

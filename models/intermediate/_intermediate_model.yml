@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: Rename_station_company
+  - name: int_Rename_station_company
     description: "{{ doc('sum_rename_station_company') }}"
     columns:
       - name: company_id
