@@ -13,7 +13,7 @@ station_renamed as (
     select 
         {{ dbt_utils.star(from=ref('gasolineras_snapshot'),except=['company','_FIVETRAN_SYNCED','DBT_SCD_ID','DBT_UPDATED_AT'] ) }},
         R.company_rename as company_brand
-    from {{ ref('Rename_station_company') }} R
+    from {{ ref('int_Rename_station_company') }} R
     join {{ ref('gasolineras_snapshot') }} G
     on R.company = G.company
 ),

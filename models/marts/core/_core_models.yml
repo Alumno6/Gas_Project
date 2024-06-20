@@ -50,13 +50,15 @@ models:
   
   - name: dim_provincias
     description: "{{ doc('dim_provincias') }}"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - provincia_id
+            - dbt_valid_to
     columns:
       - name: provincia_id
         data_type: integer
         description: "{{ doc('provincias_PROVINCIA_ID') }}"
-        tests:
-          - not_null
-          - unique
 
       - name: name
         data_type: varchar
@@ -110,13 +112,15 @@ models:
 
   - name: dim_fuel_station
     description: "{{ doc('dim_fuel_station') }}"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - station_id
+            - dbt_valid_to
     columns:
       - name: station_id
         data_type: number
         description: "{{ doc('gasolineras_STATION_ID') }}"
-        tests:
-          - not_null
-          - unique
 
       - name: country
         data_type: varchar

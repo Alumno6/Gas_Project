@@ -1,3 +1,3 @@
 {{ codegen.generate_model_yaml(
-    model_names=['Rename_station_company']
+    model_names=['int_Rename_station_company']
 ) }}

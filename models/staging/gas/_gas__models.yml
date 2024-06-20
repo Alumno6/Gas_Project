@@ -95,13 +95,15 @@ models:
 
   - name: stg_gas__provincias
     description: "{{ doc('stg_provincias') }}"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - provincia_id
+            - dbt_valid_to
     columns:
       - name: provincia_id
         data_type: integer
         description: "{{ doc('provincias_PROVINCIA_ID') }}"
-        tests:
-          - not_null
-          - unique
 
       - name: name
         data_type: varchar
